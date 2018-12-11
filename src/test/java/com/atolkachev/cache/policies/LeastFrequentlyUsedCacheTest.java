@@ -16,6 +16,9 @@ public class LeastFrequentlyUsedCacheTest {
   private static final String KEY3 = "key3";
   private static final String KEY4 = "key4";
   private static final String KEY5 = "key5";
+  private static final Integer VALUE0 = 0;
+  private static final Integer VALUE1 = 1;
+  private static final Integer VALUE5 = 5;
 
   private TwoLevelCache<String, Integer> twoLevelCache;
 
@@ -45,7 +48,7 @@ public class LeastFrequentlyUsedCacheTest {
     twoLevelCache.getFromCache(KEY0);
     twoLevelCache.getFromCache(KEY3);
     twoLevelCache.getFromCache(KEY4);
-    twoLevelCache.putIntoCache(KEY5, 5);
+    twoLevelCache.putIntoCache(KEY5, VALUE5);
 
     assertTrue(twoLevelCache.isObjectContained(KEY0));
     assertTrue(twoLevelCache.isObjectContained(KEY3));
@@ -58,8 +61,8 @@ public class LeastFrequentlyUsedCacheTest {
   public void testDeleteObjectFailedWhenObjectIsNotContained() {
     twoLevelCache = new TwoLevelCache<>(1, 1, PolicyType.LEAST_FREQUENTLY_USED);
 
-    twoLevelCache.putIntoCache(KEY0, 0);
-    twoLevelCache.putIntoCache(KEY1, 1);
+    twoLevelCache.putIntoCache(KEY0, VALUE0);
+    twoLevelCache.putIntoCache(KEY1, VALUE1);
 
     assertTrue(twoLevelCache.isObjectContained(KEY0));
     assertTrue(twoLevelCache.isObjectContained(KEY1));

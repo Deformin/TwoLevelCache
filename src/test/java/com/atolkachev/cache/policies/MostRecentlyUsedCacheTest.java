@@ -17,6 +17,7 @@ public class MostRecentlyUsedCacheTest {
   private static final String KEY2 = "key2";
   private static final String KEY3 = "key3";
   private static final String KEY4 = "key4";
+  private static final Integer VALUE4 = 4;
 
   private TwoLevelCache<String, Integer> twoLevelCache;
 
@@ -38,7 +39,7 @@ public class MostRecentlyUsedCacheTest {
       twoLevelCache.getFromCache(KEY + i);
     });
 
-    twoLevelCache.putIntoCache(KEY4, 4);
+    twoLevelCache.putIntoCache(KEY4, VALUE4);
 
     assertTrue(twoLevelCache.isObjectContained(KEY0));
     assertTrue(twoLevelCache.isObjectContained(KEY1));
