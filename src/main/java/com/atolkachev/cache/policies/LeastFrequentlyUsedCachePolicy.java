@@ -9,4 +9,10 @@ public class LeastFrequentlyUsedCachePolicy<K> extends CachePolicy<K> {
     }
     getRepository().put(key, frequency);
   }
+
+  @Override
+  public K getKeyToReplace() {
+    refreshSortedRepository();
+    return getSortedRepository().firstKey();
+  }
 }

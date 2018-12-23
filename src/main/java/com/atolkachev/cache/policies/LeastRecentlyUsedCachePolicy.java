@@ -5,4 +5,10 @@ public class LeastRecentlyUsedCachePolicy<K> extends CachePolicy<K> {
   public void putObject(K key) {
     getRepository().put(key, System.nanoTime());
   }
+
+  @Override
+  public K getKeyToReplace() {
+    refreshSortedRepository();
+    return getSortedRepository().firstKey();
+  }
 }

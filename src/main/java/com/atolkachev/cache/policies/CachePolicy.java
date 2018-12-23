@@ -21,20 +21,19 @@ public abstract class CachePolicy<K> {
 
   public abstract void putObject(K key);
 
+  public abstract K getKeyToReplace();
+
   public boolean isObjectContained(K key) {
     return repository.containsKey(key);
   }
 
   public void deleteObject(K key) {
-    if (isObjectContained(key)) {
-      repository.remove(key);
-    }
+    if (isObjectContained(key)) repository.remove(key);
   }
 
-  public K getKeyToReplace() {
+  void refreshSortedRepository() {
     sortedRepository.clear();
     sortedRepository.putAll(repository);
-    return sortedRepository.firstKey();
   }
 
   public void clear() {

@@ -8,8 +8,7 @@ public class MostRecentlyUsedCachePolicy<K> extends CachePolicy<K> {
 
   @Override
   public K getKeyToReplace() {
-    getSortedRepository().clear();
-    getSortedRepository().putAll(getRepository());
+    refreshSortedRepository();
     return getSortedRepository().lastKey();
   }
 }
