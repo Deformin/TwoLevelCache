@@ -1,12 +1,10 @@
 package com.atolkachev.cache.policies;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public abstract class CachePolicy<K> {
   private final Map<K, Long> repository;
-  private final TreeMap<K, Long> sortedRepository;
+  private final SortedMap<K, Long> sortedRepository;
 
   CachePolicy() {
     this.repository = new HashMap<>();
@@ -17,7 +15,7 @@ public abstract class CachePolicy<K> {
     return repository;
   }
 
-  TreeMap<K, Long> getSortedRepository() {
+  SortedMap<K, Long> getSortedRepository() {
     return sortedRepository;
   }
 
